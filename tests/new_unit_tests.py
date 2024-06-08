@@ -414,7 +414,7 @@ class TestUnstructuredPseudonymization(unittest.TestCase):
         """Pseudonymize free text by using YAML as config file."""
         """ works but cannot filter for Emily (just a name), this causes repetitions in names"""
 
-        with open(f"{home_dir}/PycharmProjects/pseudPy/pseudPy/config.yaml", "rt") as config_file:
+        with open(f"{home_dir}/PycharmProjects/pseudPy/tests/config.yaml", "rt") as config_file:
             config = yaml.load(config_file, Loader=Loader)
 
         output_path = 'text.txt'

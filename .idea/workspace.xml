@@ -5,54 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0fa49e4-1c5c-4bf3-a9c0-c4d1ac0fe8e6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/pseudPy.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pseudPy/Pseudonymization.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pseudPy/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pseudPy/config.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pseudPy/config_anonym.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pseudPy/config_check_k_anon.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pseudPy/gui.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pseudPy/merkle_trees.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pseudPy/myfunctions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pseudPy/script_anonym.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pseudPy/script_check_k_anonymity.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pseudPy/script_pseudonym.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/config_test_1.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/new_unit_tests.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/MOCK_DATA.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/MOCK_DATA_small.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/bigger_free_text.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_aggregate_output_date_mock_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_aggregate_output_salary_plain_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_free_text_mapping_decrypted.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_free_text_output_counter.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_mapping_0_plain_user_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_mapping_0_random4_with_seed.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_mapping_1_plain_user_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_mapping_2_plain_user_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_mapping_hash_0_plain_user_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_mapping_merkle_tree_0_plain_user_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_output_0_free_text_counter.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_output_1_free_text_counter.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_output_2_free_text_counter.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_output_hash_plain_user_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_output_merkle_tree_plain_user_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_output_plain_user_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_output_random1_plain_user_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_output_random4_with_seed.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/free_text.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/plain_user_data.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_files/user_data_100000_rows.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_myfunctions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/unit_tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pseudPy/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/config.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pseudPy/config_anonym.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/config_anonym.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pseudPy/config_check_k_anon.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/config_check_k_anon.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pseudPy/copy_gui.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pseudPy/deep_copy.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pseudPy/deep_copy_new.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pseudPy/merkle_trees.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deprecated/merkle_trees.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pseudPy/myfunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deprecated/myfunctions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/new_unit_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/new_unit_tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_myfunctions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deprecated/test_myfunctions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit_tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/Deprecated/unit_tests.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +76,7 @@
     "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_decrypt_method.executor": "Run",
     "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_encrypt_decrypt_method.executor": "Run",
     "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_encrypt_method.executor": "Run",
-    "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_counter_method.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_counter_method.executor": "Debug",
     "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_counter_method_only_names.executor": "Run",
     "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_data.executor": "Run",
     "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_data_with_revert.executor": "Run",
@@ -158,10 +124,11 @@
       <recent name="$PROJECT_DIR$/tests/test_files" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/pseudPy" />
+      <recent name="$PROJECT_DIR$/Deprecated" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/tests" />
+      <recent name="$PROJECT_DIR$/pseudPy" />
       <recent name="$PROJECT_DIR$/tests/new_test_files" />
-      <recent name="$PROJECT_DIR$/tests/test_files" />
     </key>
   </component>
   <component name="RunManager" selected="Python.gui">
@@ -187,7 +154,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for new_unit_tests.TestInvalidStructuredData" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_counter_method" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="pseudPy" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -198,11 +165,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;new_unit_tests.TestInvalidStructuredData&quot;" />
+      <option name="_new_target" value="&quot;new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_counter_method&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for new_unit_tests.TestStructuredDataAggregation" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_data_with_revert" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="pseudPy" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -213,11 +180,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;new_unit_tests.TestStructuredDataAggregation&quot;" />
+      <option name="_new_target" value="&quot;new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_data_with_revert&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for new_unit_tests.TestUnstructuredPseudonymization" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_faker_method_only_name_yaml" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="pseudPy" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -228,11 +195,11 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;new_unit_tests.TestUnstructuredPseudonymization&quot;" />
+      <option name="_new_target" value="&quot;new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_faker_method_only_name_yaml&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_faker_method_only_orgs" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests in new_unit_tests.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="pseudPy" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -243,17 +210,17 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_faker_method_only_orgs&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/tests/new_unit_tests.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.gui" />
-        <item itemvalue="Python tests.Python tests for new_unit_tests.TestStructuredDataAggregation" />
-        <item itemvalue="Python tests.Python tests for new_unit_tests.TestInvalidStructuredData" />
-        <item itemvalue="Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_faker_method_only_orgs" />
-        <item itemvalue="Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization" />
+        <item itemvalue="Python tests.Python tests in new_unit_tests.py" />
+        <item itemvalue="Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_faker_method_only_name_yaml" />
+        <item itemvalue="Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_counter_method" />
+        <item itemvalue="Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_data_with_revert" />
       </list>
     </recent_temporary>
   </component>
@@ -274,5 +241,16 @@
       <updated>1713856995979</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

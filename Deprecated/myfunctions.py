@@ -9,7 +9,7 @@ from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import padding
 from base64 import b64encode, b64decode
 import hashlib
-from pseudPy import merkle_trees
+from Deprecated import merkle_trees
 import spacy
 import re
 

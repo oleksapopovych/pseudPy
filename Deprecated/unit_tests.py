@@ -1,6 +1,6 @@
 import unittest
 import pandas as pd
-from pseudPy import myfunctions as pseudPy
+from Deprecated import myfunctions as pseudPy
 import os
 
 home_dir = os.path.expanduser('~')

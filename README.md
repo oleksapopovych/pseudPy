@@ -52,7 +52,7 @@ will be found correctly, so the user is also responsible for verifying the outpu
 
 #### Clone the repository:
 ```bash
-git clone pseudPy@git.url
+git clone https://github.com/oleksapopovych/pseudPy.git
 ```
 
 #### Navigate to the directory with the repository and create the virtual environment:
@@ -77,7 +77,7 @@ If complications occur, please refer to the [venv documentation](https://docs.py
 
 #### Install requirements:
 ```bash
-pip install -r /path/to/requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Examples
@@ -87,7 +87,7 @@ pip install -r /path/to/requirements.txt
 
 Run the script  with YAML config file(from the repository directory):
 ```bash
-python /pseudPy/script_pseudonym.py config.yaml
+python /pseudPy/script_pseudonym.py /tests/config.yaml
 ```
 YAML for unstructured data:
 ```yaml
@@ -103,10 +103,13 @@ all_ne: true
 seed: null
 ```
 Input:
-> Project Titan led by Project Manager Emily White in London achieved a 20% cost saving.
-
+```txt
+Project Titan led by Project Manager Emily White in London achieved a 20% cost saving.
+```
 Output:
-> Project Stevenport led by Project Manager Tina Villanueva in Susanfort achieved a 20% cost saving.
+```txt
+Project Stevenport led by Project Manager Tina Villanueva in Susanfort achieved a 20% cost saving.
+```
 
 ### 2. Import and apply pseudonymization functions
 
