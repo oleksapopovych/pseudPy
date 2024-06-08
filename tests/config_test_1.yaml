@@ -1,0 +1,12 @@
+map_columns:
+  - name
+map_method: random1
+input_file: /Users/oleksandrapopovych/PycharmProjects/pseudPy/tests/test_files/plain_user_data.csv
+output_to_file: true
+pos_type: null
+output: /Users/oleksandrapopovych/PycharmProjects/pseudPy/tests
+mapping: true
+encrypt_map: true
+all_ne: false
+seed: 300
+patterns: null

@@ -1,0 +1,5 @@
+input_file: /Users/oleksandrapopovych/PycharmProjects/pseudPy/tests/test_files/MOCK_DATA_small.csv
+output: /Users/oleksandrapopovych/PycharmProjects/pseudPy/tests/test_files
+agg_columns: date_of_birth
+k: 2
+aggregation_range: 1

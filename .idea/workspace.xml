@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="c0fa49e4-1c5c-4bf3-a9c0-c4d1ac0fe8e6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/pseudPy.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pseudPy/Pseudonymization.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pseudPy/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pseudPy/config.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pseudPy/config_anonym.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pseudPy/config_check_k_anon.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pseudPy/gui.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pseudPy/merkle_trees.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pseudPy/myfunctions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pseudPy/script_anonym.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pseudPy/script_check_k_anonymity.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pseudPy/script_pseudonym.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/config_test_1.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/new_unit_tests.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/MOCK_DATA.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/MOCK_DATA_small.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/bigger_free_text.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_aggregate_output_date_mock_data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_aggregate_output_salary_plain_data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_free_text_mapping_decrypted.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_free_text_output_counter.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_mapping_0_plain_user_data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_mapping_0_random4_with_seed.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_mapping_1_plain_user_data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_mapping_2_plain_user_data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_mapping_hash_0_plain_user_data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_mapping_merkle_tree_0_plain_user_data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_output_0_free_text_counter.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_output_1_free_text_counter.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_output_2_free_text_counter.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_output_hash_plain_user_data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_output_merkle_tree_plain_user_data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_output_plain_user_data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_output_random1_plain_user_data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/expected_output_random4_with_seed.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/free_text.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/plain_user_data.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_files/user_data_100000_rows.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_myfunctions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/unit_tests.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2fUYCOtNtQlHM4ThJTnrVNoTKkp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python tests.Python tests for new_unit_tests.TestInvalidStructuredData.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestInvalidStructuredData.test_all_empty_elements_in_rows.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestInvalidStructuredData.test_empty_elements_in_rows.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestInvalidStructuredData.test_empty_encryption.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestInvalidStructuredData.test_empty_rows.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestInvalidStructuredData.test_only_header.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestStructuredDataAggregation.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestStructuredDataAggregation.test_aggregate_date_mock_data.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestStructuredDataAggregation.test_aggregate_salary_plain_user_data.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestStructuredDataAggregation.test_k_anon_more_depth.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestStructuredDataAggregation.test_k_anonymity_and_agg_mock_data.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestStructuredPseudonymization.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestStructuredPseudonymization.test_pseudonym_with_valid_data_and_counter_method.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestStructuredPseudonymization.test_pseudonym_with_valid_data_and_counter_method_10000_rows.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestStructuredPseudonymization.test_pseudonym_with_valid_data_and_counter_method_10000_rows_speed.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestStructuredPseudonymization.test_pseudonym_with_valid_data_and_encrypted_maps.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestStructuredPseudonymization.test_pseudonym_with_valid_data_and_encryption.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestStructuredPseudonymization.test_pseudonym_with_valid_data_and_hash_method.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestStructuredPseudonymization.test_pseudonym_with_valid_data_and_merkle_tree_method.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestStructuredPseudonymization.test_pseudonym_with_valid_data_and_random1_method.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestStructuredPseudonymization.test_pseudonym_with_valid_data_and_random_method.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestStructuredPseudonymization.test_pseudonym_with_valid_data_and_random_method_and_revert.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestStructuredPseudonymization.test_pseudonym_with_valid_data_and_random_method_seed.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_decrypt_method.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_encrypt_decrypt_method.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_encrypt_method.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_counter_method.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_counter_method_only_names.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_data.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_data_with_revert.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_faker_method_only_name.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_faker_method_only_name_yaml.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_faker_method_only_names.executor": "Run",
+    "Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_faker_method_only_orgs.executor": "Run",
+    "Python tests.Python tests for test.TestAggregateNumbers.test_agg_salary.executor": "Run",
+    "Python tests.Python tests for unit_tests.NLPPseudonymMethods.executor": "Run",
+    "Python tests.Python tests for unit_tests.NLPPseudonymMethods.test_contextual_sensitivity.executor": "Run",
+    "Python tests.Python tests for unit_tests.NLPPseudonymMethods.test_contextual_sensivity.executor": "Run",
+    "Python tests.Python tests for unit_tests.NLPPseudonymMethods.test_multiple_instance_german_counter.executor": "Run",
+    "Python tests.Python tests for unit_tests.NLPPseudonymMethods.test_sentences_no_entities.executor": "Run",
+    "Python tests.Python tests for unit_tests.NLPPseudonymMethods.test_single_instance_english_hash_with_salt.executor": "Run",
+    "Python tests.Python tests for unit_tests.NLPPseudonymMethods.test_single_instance_german_hash.executor": "Run",
+    "Python tests.Python tests for unit_tests.TestAggregateNumbers.executor": "Run",
+    "Python tests.Python tests for unit_tests.TestAggregateNumbers.test_agg_age.executor": "Run",
+    "Python tests.Python tests for unit_tests.TestAggregateNumbers.test_agg_more_columns.executor": "Run",
+    "Python tests.Python tests for unit_tests.TestAggregateNumbers.test_agg_salary.executor": "Run",
+    "Python tests.Python tests for unit_tests.TestAggregateNumbers.test_decryption.executor": "Run",
+    "Python tests.Python tests for unit_tests.TestAggregateNumbers.test_decryption_more_columns.executor": "Run",
+    "Python tests.Python tests for unit_tests.TestAggregateNumbers.test_map_two_tier.executor": "Run",
+    "Python tests.Python tests for unit_tests.TestDecryption.executor": "Run",
+    "Python tests.Python tests for unit_tests.TestDecryption.test_decryption.executor": "Run",
+    "Python tests.Python tests for unit_tests.TestDecryption.test_decryption_more_columns.executor": "Run",
+    "Python tests.Python tests for unit_tests.TestDecryption.test_decryption_more_columns_10000_rows.executor": "Run",
+    "Python tests.Python tests for unit_tests.TestMapMethods.executor": "Run",
+    "Python tests.Python tests for unit_tests.TestMapMethods.test_map_two_tier.executor": "Run",
+    "Python tests.Python tests in new_unit_tests.py.executor": "Run",
+    "Python tests.Python tests in test.py.executor": "Run",
+    "Python tests.Python tests in unit_tests.py.executor": "Run",
+    "Python.Pseudonymization.executor": "Run",
+    "Python.gui.executor": "Run",
+    "Python.script.executor": "Run",
+    "Python.script_anonym.executor": "Run",
+    "Python.test_myfunctions.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/Users/oleksandrapopovych/PycharmProjects/pseudPy/tests/test_files"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/test_files" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/pseudPy" />
+      <recent name="$PROJECT_DIR$/tests" />
+      <recent name="$PROJECT_DIR$/tests/new_test_files" />
+      <recent name="$PROJECT_DIR$/tests/test_files" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.gui">
+    <configuration name="gui" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="pseudPy" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/pseudPy" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/pseudPy/gui.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for new_unit_tests.TestInvalidStructuredData" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="pseudPy" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;new_unit_tests.TestInvalidStructuredData&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for new_unit_tests.TestStructuredDataAggregation" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="pseudPy" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;new_unit_tests.TestStructuredDataAggregation&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for new_unit_tests.TestUnstructuredPseudonymization" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="pseudPy" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;new_unit_tests.TestUnstructuredPseudonymization&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_faker_method_only_orgs" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="pseudPy" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_faker_method_only_orgs&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.gui" />
+        <item itemvalue="Python tests.Python tests for new_unit_tests.TestStructuredDataAggregation" />
+        <item itemvalue="Python tests.Python tests for new_unit_tests.TestInvalidStructuredData" />
+        <item itemvalue="Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization.test_nlp_pseudonym_work_report_faker_method_only_orgs" />
+        <item itemvalue="Python tests.Python tests for new_unit_tests.TestUnstructuredPseudonymization" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-09665e90c3a7-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.15026.15" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c0fa49e4-1c5c-4bf3-a9c0-c4d1ac0fe8e6" name="Changes" comment="" />
+      <created>1713856995979</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1713856995979</updated>
+    </task>
+    <servers />
+  </component>
+</project>
