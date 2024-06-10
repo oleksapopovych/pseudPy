@@ -20,7 +20,43 @@ from faker import Faker
 
 
 class Pseudonymization:
-    """Main pseudonymization class"""
+    """Main class for data pseudonymization.
+
+    Parameters
+    ----------
+    map_method : str
+        Pseudonymization method. Select one of the following: *'counter', 'random1', 'random4', 'hash', 'hash-salt',
+        'merkle-tree', 'encrypt', 'decrypt', 'faker'*.
+
+        Or specify the faker method: *'faker-name', 'faker-loc','faker-email', 'faker-phone', 'faker-org'*.
+    map_columns : str or list
+        Column(s) to be pseudonymized for structured data.
+    input_file : str
+        Path to input file. Use if the parameter df is not specified.
+    output : str
+        Path to output folder. Use if the output to file is required.
+    df : Polars DataFrame
+        Input CSV, read as Polars DataFrame. Use if data is structured and the input_file is not specified.
+    mapping : bool
+        Enable or disable mapping output. Required for reversibility of pseudonyms.
+    encrypt_map : bool
+        Enable or disable encryption of the mapping table. Output includes additionally secret key file for decryption.
+    text : str
+        Input text. Use if data is unstructured and the input_file is not specified.
+    all_ne : bool
+        Enable or disable pseudonymization of all named entities such as names, locations,
+        and organizations. Use if data is unstructured and no other entities have to be pseudonymized.
+    seed : int
+        Seed random pseudonymization methods like random1, random4, or faker. Return always expected result.
+    pos_type : str or list
+        Type(s) of entities in data to be pseudonymized such as names, locations,
+        organizations, emails, and phone numbers. Use if data is unstructured.
+    patterns : str or spaCy Matcher
+        If data is structured, use *"column,operation,value"*,
+
+        else *patterns = [[{"LOWER": "abc"}, {"LOWER": "corporation"}]...]*.
+    """
+
     def __init__(self, map_method='counter', map_columns=None, input_file=None, output=None, df=None, mapping=True,
                  encrypt_map=False, text=None, all_ne=False, seed=None, pos_type=None, patterns=None):
         self.map_columns = map_columns
@@ -37,8 +73,30 @@ class Pseudonymization:
         self.patterns = patterns
 
     def pseudonym(self):
-        """Main function to initiate pseudonymization of csv.
-            Returns a pseudonymized Dataframe or a String. Writes pseudonymized and mapping files."""
+        # TOD
+        """
+        Main function for pseudonymization of csv data.
+
+        Returns
+        -------
+        Pseudonymized Dataframe or a String. If output parameter is passed, writes pseudonymized and mapping files.
+
+        If the encryption is involved, the secret keys are written to the .txt files by default.
+
+        Example
+        -------
+        Pseudonymization of structured data using 'faker-name' method and filtering.
+        ::
+            >>> import pseudPy.Pseudonymization as pseudPy
+            >>> pseudo = pseudPy.Pseudonymization(
+            >>>        map_method = 'faker-name',
+            >>>        map_columns = 'names',
+            >>>        input_file= '/path/to/data.csv',
+            >>>        output='/output/dir',
+            >>>        patterns=['salary', '>', 100000])
+            >>>
+            >>> pseudo.pseudonym()
+        """
         # read data as Polars DataFrame
         if self.input_file is not None:
             self.df = pl.DataFrame()
@@ -69,7 +127,34 @@ class Pseudonymization:
                 self.df.write_csv(f"{self.output}/decrypted_output_{self.map_columns[i]}.csv")
 
     def revert_pseudonym(self, revert_df=None, pseudonyms=None):
-        """Revert structured data to original in form of Dataframe."""
+        """Revert structured data to original in form of Dataframe.
+
+        Parameters
+        ----------
+        revert_df : Polars DataFrame
+            The mapping table in form of Polars Dataframe.
+        pseudonyms : list
+            Filter for exact pseudonyms to revert. Optional.
+
+        Returns
+        -------
+        A reverted Dataframe and if output parameter is passed, a file with reverted pseudonyms.
+
+        Example
+        -------
+        Revert pseudonymized values to the original. For structured data.
+        ::
+            >>> import pseudPy.Pseudonymization as pseudPy
+            >>> df = pl.read_csv('/path/to/data.csv')
+            >>> output='/output/dir'
+            >>> pseudo = pseudPy.Pseudonymization(
+            >>>        map_columns = 'column1',
+            >>>        df=df,
+            >>>        output=output)
+            >>> df_revert = pl.read_csv(f'{output}/mapping_output_column1.csv')
+            >>>
+            >>> pseudo.revert_pseudonym(df_revert)
+        """
         if pseudonyms is not None:
             try:
                 revert_df = revert_df.filter(pl.col(f"Index_{self.map_columns}").is_in(pseudonyms))
@@ -88,7 +173,27 @@ class Pseudonymization:
 
     def nlp_pseudonym(self):
         """Main function for pseudonymization of free text.
-            Returns a pseudonymized String or writes the pseudonymized String and mappings to files."""
+
+        Returns
+        -------
+        A pseudonymized String or, if output parameter is passed, writes the pseudonymized String and mappings to files.
+
+        If the encryption is involved, the secret keys are written to the .txt files by default.
+
+        Example
+        -------
+        Pseudonymization of unstructured data using 'merkle-tree' method and filtering.
+        ::
+            >>> import pseudPy.Pseudonymization as pseudPy
+            >>> pseudo = pseudPy.Pseudonymization(
+            >>>        map_method = 'merkle-tree',
+            >>>        input_file = '/path/to/input.txt',
+            >>>        output='/output/dir',
+            >>>        patterns = [[{"LOWER": "Emily"}, {"LOWER": "White"}],
+            >>>        [{"LOWER": "Bob"}]])
+            >>>
+            >>> pseudo.pseudonym()
+        """
         # definitions
         counter = 0
         list_with_all_df = []
@@ -155,7 +260,35 @@ class Pseudonymization:
                 return list_with_all_df
 
     def revert_nlp_pseudonym(self, revert_df, pseudonyms=None):
-        """Revert free text to original and return it as a String."""
+        """Revert free text to original.
+
+        Parameters
+        ----------
+        revert_df : Polars DataFrame
+            The mapping table.
+        pseudonyms : list
+            Filter for exact pseudonyms to revert. Optional.
+
+        Returns
+        -------
+        A String or, if output parameter is passed, output as a file.
+
+        Example
+        -------
+        Revert pseudonymized values to the original. For unstructured data.
+        ::
+            >>> import pseudPy.Pseudonymization as pseudPy
+            >>> with open('/path/to/input.txt', "r") as file:
+            >>>      text = file.read()
+            >>> output = '/output/dir'
+            >>> pseudo = pseudPy.Pseudonymization(
+            >>>        map_columns = 'Names',   # select from: 'Names', 'Locations', 'Organizations', 'Emails' and 'Phone-Numbers'
+            >>>        text=text,
+            >>>        output=output)
+            >>> df_revert = pl.read_csv(f'{output}/mapping_output_Names.csv')
+            >>>
+            >>> pseudo.revert_nlp_pseudonym(df_revert)
+        """
         if pseudonyms is not None:
             try:
                 revert_df = revert_df.filter(pl.col(f"Index_{self.map_columns}").is_in(pseudonyms))
@@ -614,7 +747,22 @@ class Helpers:
 
 
 class Aggregation:
-    """Class for data aggregation."""
+    """Class for data aggregation.
+
+    Parameters
+    ----------
+    column : str
+        Column to aggregate.
+    method : list
+        Aggregation method and the range - ['number', int] for numerical data or ['dates-to-years', int] for dates.
+    df : Pandas Dataframe
+        Input Dataframe. Required if input path is not provided.
+    input_file : str
+        Path to input file. Required if dataframe is not provided.
+    output : str
+        Path to output folder.
+
+    """
     def __init__(self, column, method, df=None, input_file=None, output=None):
         self.column = column
         self.method = method
@@ -623,7 +771,25 @@ class Aggregation:
         self.output = output
 
     def group(self):
-        """Main function to initiate aggregation of csv. Return a Dataframe or write output file."""
+        """Main function to initiate aggregation of csv.
+
+        Returns
+        -------
+        Output to file, if the output path is passed, or to a Pandas Dataframe.
+
+        Example
+        -------
+        Aggregate salary data to the groups of range 10000.
+        ::
+            >>> import pseudPy.Pseudonymization as pseudPy
+            >>> agg = pseudPy.Aggregation(
+            >>>     column='salary',
+            >>>     method=['number', 10000],
+            >>>     input_file='some_user_data.csv',
+            >>>     output='/output/dir')
+            >>>
+            >>> agg.group()
+        """
         if self.input_file is not None:
             self.df = pd.DataFrame()
             self.df = pd.read_csv(self.input_file)
@@ -636,7 +802,10 @@ class Aggregation:
 
     def group_num(self):
         """Aggregate only numerical data in the given columns of a Dataframe.
-        Return Dataframe column with aggregated values."""
+
+        Returns
+        -------
+        Dataframe column with aggregated numerical values."""
         bins, labels = [0], []
         bin_update = 0
         max_number = self.df[self.column].max()
@@ -658,7 +827,11 @@ class Aggregation:
         return self.df[self.column]
 
     def group_dates_to_years(self):
-        """Aggregate only date values to years. Return aggregated Dataframe."""
+        """Aggregate only date values to years.
+
+        Returns
+        -------
+        Aggregated Dataframe with years or year periods."""
         self.df[self.column] = pd.to_datetime(self.df[self.column]).dt.year
         if self.method[1] == 1:
             return self.df
@@ -669,7 +842,25 @@ class Aggregation:
 class KAnonymity:
     # Adapted from: https://programming-dp.com/ch2.html
 
-    def __init__(self, df, k, depths=None, mask_others=False, output=None):
+    """
+    Class for data k-anonymization.
+
+    Parameters
+    ----------
+    df : Pandas Dataframe
+        Input data.
+    k : int
+        The level of anonymity. Each row in the data must be matched to at least k other rows.
+    depths : dict
+        The depths of rounding the values in form {column_name: depth}. Ex. value=55222, depths = {value: 1}, result=55220.
+    mask_others : bool
+        Enable or disable tokenizing all string values with token ' * '.  To achieve k-anonymity,
+        string data must be masked in most cases, unless it has also been k-anonymized externally beforehand.
+    output : str
+        Path to output folder.
+    """
+
+    def __init__(self, df, k, depths=None, mask_others=True, output=None):
         self.df = df
         self.depths = depths
         self.k = k
@@ -677,13 +868,37 @@ class KAnonymity:
         self.output = output
 
     def k_anonymity(self):
-        """k-anonymize the data by providing the dataframe, k, depths of anonymization."""
+        """k-anonymize the data by providing the dataframe, k, depths of anonymization.
+
+        Returns
+        -------
+        k-anonymized Dataframe or output to file, if the output path is passed.
+
+        Example
+        -------
+        k-anonymize salary data with k of 2.
+        ::
+            >>> import pseudPy.Pseudonymization as pseudPy
+            >>> df = pl.read_csv('/path/to/input.csv')
+            >>> k_anonymity = pseudPy.KAnonymity(
+            >>>             df=df,
+            >>>             depths={'salary': 1},
+            >>>             k=2,
+            >>>             output='/output/dir')
+            >>>
+            >>> grouped = k_anonymity.k_anonymity())
+        """
         def generalize(col):
             if col in self.depths:
                 depth = self.depths[col]
                 # floor the data to the nearest multiple of 10**depth
                 return self.df[col].apply(lambda y: int(int(y / (10 ** depth)) * (10 ** depth))if pd.notnull(y) else y)
             return self.df[col]
+
+        if self.mask_others:
+            df_header = set(self.df.columns)
+            for key in df_header - set(self.depths.keys()):
+                self.df[key] = '*'
 
         for key in self.depths:
             if pd.api.types.is_integer_dtype(self.df[key]):
@@ -703,20 +918,31 @@ class KAnonymity:
             return grouped
 
     def is_k_anonymized(self):
-        """Check if the data is k-anonymous"""
+        """Check if the data is k-anonymous.
+
+        Returns
+        -------
+        True or False.
+
+        Example
+        -------
+        Check if the data is k-anonymous.
+        ::
+            >>> import pseudPy.Pseudonymization as pseudPy
+            >>> grouped = pl.read_csv('/path/to/input.csv')
+            >>> is_k_anonym = pseudPy.KAnonymity(
+            >>>             df=grouped,
+            >>>             depths={'salary': 1},
+            >>>             k=2)
+            >>>
+            >>> print(is_k_anonym.is_k_anonymized())
+        """
         for index, row in self.df.iterrows():
             query = ' & '.join([f'`{col}` == {repr(row[col])}' for col in self.df.columns])
             rows = self.df.query(query)
             if rows.shape[0] < self.k:
                 return False
         return True
-
-    @staticmethod
-    def remove_other_datatypes(df, columns):
-        """Remove the datatypes other than integer or float"""
-        for key in columns:
-            df[key] = '*'
-        return df
 
 
 map_method_handlers = {
@@ -731,7 +957,8 @@ map_method_handlers = {
     'faker-name': Mapping.faker_names_tier,
     'faker-loc': Mapping.faker_location_tier,
     'faker-email': Mapping.faker_email_tier,
-    'faker-phone': Mapping.faker_phone_number_tier
+    'faker-phone': Mapping.faker_phone_number_tier,
+    'faker-org': Mapping.faker_org_tier
 }
 
 faker_pos_handlers = {

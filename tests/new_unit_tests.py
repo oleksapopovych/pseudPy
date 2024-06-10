@@ -237,7 +237,7 @@ class TestStructuredPseudonymization(unittest.TestCase):
         df = pl.read_csv(output_path)
 
         for elem in range(2):
-            pseudo = pseudPy.Pseudonymization(map_method, map_columns[elem], df=df, output=output)
+            pseudo = pseudPy.Pseudonymization(map_columns=map_columns[elem], df=df, output=output)
             df_revert = pl.read_csv(f'{test_files_folder}/mapping_output_{map_columns[elem]}.csv')
             df = pseudo.revert_pseudonym(df_revert)
 
@@ -524,7 +524,7 @@ class TestUnstructuredPseudonymization(unittest.TestCase):
         list_columns = ['Names', 'Locations', 'Organizations']
 
         for elem in range(len(list_columns)):
-            pseudo = pseudPy.Pseudonymization(map_columns=list_columns[elem], text=text, map_method='faker', output=output)
+            pseudo = pseudPy.Pseudonymization(map_columns=list_columns[elem], text=text, output=output)
             df_revert = pl.read_csv(f'{output}/mapping_output_{list_columns[elem]}.csv')
             text = pseudo.revert_nlp_pseudonym(df_revert)
 
@@ -695,8 +695,6 @@ class TestStructuredDataAggregation(unittest.TestCase):
         # plt.show()
         # plt.close()
 
-        df = pseudPy.KAnonymity.remove_other_datatypes(df, ['name', 'gender', 'company'])
-
         depths = {
             'salary': 1,
             'date_of_birth': 1
@@ -731,8 +729,6 @@ class TestStructuredDataAggregation(unittest.TestCase):
     def test_k_anon_more_depth(self):
         """k-anonymize data with k=3, plot the results"""
         df = pd.read_csv(f"{test_files_folder}/plain_user_data.csv")
-
-        df = pseudPy.KAnonymity.remove_other_datatypes(df, ['name', 'gender', 'country', 'job_title'])
 
         # df['salary'].hist()
         # plt.show()

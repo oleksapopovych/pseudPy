@@ -14,25 +14,10 @@ from tkinter import filedialog
 def initialize_pseudonym():
     """Getting user input and completing pseudonymization"""
     is_structured = True
-    map_columns_list = []
     map_method = map_method_var.get()
-    if structure_var.get() == "structured":
-        map_columns = map_columns_entry.get()
-        if map_columns == "-":
-            map_columns = None
-        else:
-            map_columns_list = map_columns.split(",")
-            map_columns_list = [i.strip() for i in map_columns_list]
     input_file = input_file_entry.get()
     if not os.path.exists(input_file):
         messagebox.showinfo("Failed", "Input path does not exist!")
-    if structure_var.get() == "free text":
-        pos_type_selected = pos_type_list.curselection()
-        pos_type = [pos_type_list.get(i) for i in pos_type_selected]
-        if not pos_type:
-            pos_type = None
-        all_ne = all_ne_var.get()
-
     patterns = patterns_entry.get()
     if patterns == "-" or patterns == "column,operation,value,type":
         patterns = None
@@ -51,6 +36,8 @@ def initialize_pseudonym():
     seed = seed_entry.get()
     if seed == "-":
         seed = None
+    else:
+        seed = int(seed)
 
     try:
         pl.read_csv(input_file)
@@ -66,8 +53,15 @@ def initialize_pseudonym():
         messagebox.showinfo("Failed", "Please fill out the form first!")
 
     if is_structured:
+        map_columns = map_columns_entry.get()
+        if map_columns == "-":
+            map_columns = None
+        else:
+            map_columns = map_columns.split(",")
+            map_columns = [i.strip() for i in map_columns]
+
         pseudo = pseudPy.Pseudonymization(
-            map_columns=map_columns_list,
+            map_columns=map_columns,
             map_method=map_method,
             input_file=input_file,
             output=output,
@@ -80,6 +74,12 @@ def initialize_pseudonym():
         pseudo.pseudonym()
         messagebox.showinfo("Success", "Pseudonymization successful!")
     else:
+        pos_type_selected = pos_type_list.curselection()
+        pos_type = [pos_type_list.get(i) for i in pos_type_selected]
+        if not pos_type:
+            pos_type = None
+        all_ne = all_ne_var.get()
+
         pseudo = pseudPy.Pseudonymization(
             map_method=map_method,
             input_file=input_file,
@@ -417,7 +417,8 @@ def add_widgets():
         'faker-name',
         'faker-loc',
         'faker-email',
-        'faker-phone'
+        'faker-phone',
+        'faker-org'
     ]
 
     large_font = tkFont.Font(family="Helvetica, Arial, sans-serif", size=16, weight="bold")
