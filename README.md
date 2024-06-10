@@ -28,7 +28,7 @@ provided as anonymization and data minimization options.
 ### Documentation
 
 ---
-url
+[pseudPy Documentation](https://github.com/oleksapopovych/pseudPy/blob/main/pseudPy/docs/build/pdf/pseudPy.pdf)
 
 ### Main Features
 
