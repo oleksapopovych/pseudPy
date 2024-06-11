@@ -749,8 +749,9 @@ class TestStructuredDataAggregation(unittest.TestCase):
 
         grouped = k_anonymity.k_anonymity()
 
+        print(grouped)
         # check if k-anonymized
-        k = 3
+        k = 4
         is_k_anonym = pseudPy.KAnonymity(
             df=grouped,
             k=k,

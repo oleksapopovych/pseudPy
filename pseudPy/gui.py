@@ -387,7 +387,10 @@ def update_types_of_data(*args):
 
 def add_widgets():
     """Add widgets to the structured or free text or k-anonymization data windows"""
-    root.geometry("700x750")
+    if structure_var.get() == "free text":
+        root.geometry("700x750")
+    else:
+        root.geometry("700x600")
 
     if root_frame.winfo_children():
         for widget in root_frame.winfo_children():
@@ -404,22 +407,39 @@ def add_widgets():
         mapping_var, encrypt_map_var, all_ne_var, patterns_entry, seed_entry, types_of_data, k_entry, \
         mask_str_var, agg_entry, gap_entry, pos_type_list, types_of_data
 
-    method_options = [
-        'counter',
-        'encrypt',
-        'decrypt',
-        'random1',
-        'random4',
-        'hash',
-        'hash-salt',
-        'merkle-tree',
-        'faker',
-        'faker-name',
-        'faker-loc',
-        'faker-email',
-        'faker-phone',
-        'faker-org'
-    ]
+    if structure_var.get() == "free text":
+        method_options = [
+            'counter',
+            'encrypt',
+            'decrypt',
+            'random1',
+            'random4',
+            'hash',
+            'hash-salt',
+            'merkle-tree',
+            'faker',
+            'faker-name',
+            'faker-loc',
+            'faker-email',
+            'faker-phone',
+            'faker-org'
+        ]
+    elif structure_var.get() == "structured":
+        method_options = [
+            'counter',
+            'encrypt',
+            'decrypt',
+            'random1',
+            'random4',
+            'hash',
+            'hash-salt',
+            'merkle-tree',
+            'faker-name',
+            'faker-loc',
+            'faker-email',
+            'faker-phone',
+            'faker-org'
+        ]
 
     large_font = tkFont.Font(family="Helvetica, Arial, sans-serif", size=16, weight="bold")
     medium_font = tkFont.Font(family="Helvetica, Arial, sans-serif", size=14)
@@ -540,6 +560,7 @@ def add_widgets():
         gap_entry.insert(0, "-")
         gap_entry.grid(row=8, column=1, pady=10, sticky=tk.E)
 
+
     if structure_var.get() == "structured":
 
         map_columns_label = tk.Label(root_frame, text="Columns:")
@@ -655,7 +676,6 @@ def add_widgets():
         )
         seed_entry.grid(row=11, column=1, pady=10, sticky=tk.E)
 
-
     if structure_var.get() == "free text" or structure_var.get() == "structured":
         register_button = tk.Button(root_frame, text="Go!", command=initialize_pseudonym)
         register_button.grid(row=12, column=1, pady=10)
@@ -666,10 +686,15 @@ def add_widgets():
         check_k_anonymity = tk.Button(root_frame, text="Check k-anonymity", command=check_k_anon)
         check_k_anonymity.grid(row=12, column=2, pady=10)
 
+    if structure_var.get() == "k-anonymity":
+        note_label = tk.Label(root_frame, text="Note: for structured data only!", font=medium_font,
+                              fg='#c1121f')
+        note_label.grid(row=13, column=0, pady=10, sticky=tk.W)
+
 
 def check_structure():
     """Add widgets to the homepage, select the type of data or the type of operation to proceed"""
-    root.geometry("700x300")
+    root.geometry("700x400")
 
     if root_frame.winfo_children():
         for widget in root_frame.winfo_children():
@@ -688,7 +713,6 @@ def check_structure():
     form_options = [
         "structured",
         "free text",
-        "k-anonymity"
     ]
 
     structure_label = tk.Label(root_frame, text="Select Form of Data:")
@@ -704,6 +728,32 @@ def check_structure():
 
     next_button = tk.Button(root_frame, text="Next", command=add_widgets)
     next_button.grid(row=1, column=2, pady=10, sticky=tk.E)
+
+    or_label = tk.Label(root_frame, text="or")
+    or_label.config(
+        font=tkFont.Font(family="Helvetica, Arial, sans-serif", size=16, weight="bold")
+    )
+    or_label.grid(row=2, column=0, pady=10, sticky=tk.E)
+
+    k_anon_label = tk.Label(root_frame, text="k-Anonymize")
+    k_anon_label.config(
+        font=tkFont.Font(family="Helvetica, Arial, sans-serif", size=16, weight="bold")
+    )
+    k_anon_label.grid(row=3, column=0, pady=10, sticky=tk.E)
+
+    arrow_label = tk.Label(root_frame, text="/   Aggregate Data:")
+    arrow_label.config(
+        font=tkFont.Font(family="Helvetica, Arial, sans-serif", size=16, weight="bold")
+    )
+    arrow_label.grid(row=3, column=1, pady=10)
+
+    k_button = tk.Button(root_frame, text="Here", command=set_entry_and_add_widgets)
+    k_button.grid(row=3, column=2, pady=10, sticky=tk.E)
+
+
+def set_entry_and_add_widgets():
+    structure_var.set('k-anonymity')
+    add_widgets()
 
 
 def k_anonym():

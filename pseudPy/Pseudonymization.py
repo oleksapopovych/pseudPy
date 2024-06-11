@@ -118,6 +118,24 @@ class Pseudonymization:
             else:
                 return helpers.handle_map_tiers(output_files=False)
         elif self.map_method == 'decrypt':
+            if self.patterns is not None:
+                column, op, value = (self.patterns[0], self.patterns[1].strip(), self.patterns[2])
+                if op == '>':
+                    condition = pl.col(column) > value
+                    filtered_df = self.df.filter(~condition)
+                elif op == '<':
+                    condition = pl.col(column) < value
+                    filtered_df = self.df.filter(~condition)
+                elif op == '==':
+                    condition = pl.col(column) == value
+                    filtered_df = self.df.filter(~condition)
+                elif op == '!=':
+                    condition = pl.col(column) != value
+                    filtered_df = self.df.filter(~condition)
+                else:
+                    raise ValueError("Invalid operation")
+
+                self.df = self.df.filter(condition)
             for i in range(len(self.map_columns)):
                 mapping_instance = Mapping(df=self.df, first_tier=self.map_columns[i], output=self.output)
                 decrypt = map_method_handlers[self.map_method](mapping_instance)
@@ -506,6 +524,17 @@ class Mapping:
         return pl.Series(f'Index_{self.first_tier}', self.df[self.first_tier].map_elements(
             lambda x: Mapping.generate_fake_org_name(), return_dtype=pl.Utf8))
 
+    @staticmethod
+    def generate_fake_random_word():
+        """Generate fake word using Faker."""
+        fake = Faker()
+        return fake.word().capitalize()
+
+    def faker_rand_word_tier(self):
+        """Apply fake word as pseudonyms. Return Series of pseudonyms."""
+        return pl.Series(f'Index_{self.first_tier}', self.df[self.first_tier].map_elements(
+            lambda x: Mapping.generate_fake_random_word(), return_dtype=pl.Utf8))
+
 
 # Merkle Tree adapted from: https://github.com/onuratakan/mix_merkletree
 class Node:
@@ -643,14 +672,14 @@ class Helpers:
                     # mapping file contains only the pseudonyms and corresponding original row
                     df_copy.write_csv(f'{self.output}/mapping_output_{self.map_columns[i]}.csv')
             return_map_output.append(df_copy)
-            if self.patterns is not None:
-                filtered_df = filtered_df.rename({f"{self.map_columns[i]}": f"Index_{self.map_columns[i]}"})
+            # if self.patterns is not None:
+            #    filtered_df = filtered_df.rename({f"{self.map_columns[i]}": f"Index_{self.map_columns[i]}"})
         # if the data is filtered, the filtered data is pseudonymized and the remaining data is output in its
         # original state. Both are concatenated into one file.
-        if self.patterns is not None:
-            filtered_df = Helpers.int_to_str(filtered_df)
-            df_map_all = Helpers.int_to_str(df_map_all)
-            df_map_all = pl.concat([df_map_all, filtered_df])
+        # if self.patterns is not None:
+            # filtered_df = Helpers.int_to_str(filtered_df)
+            # df_map_all = Helpers.int_to_str(df_map_all)
+            # df_map_all = pl.concat([df_map_all, filtered_df])
         if output_files:
             # output file contains pseudonyms and other rows that were not modified
             df_map_all.write_csv(f'{self.output}/output.csv')
@@ -860,7 +889,7 @@ class KAnonymity:
         Path to output folder.
     """
 
-    def __init__(self, df, k, depths=None, mask_others=True, output=None):
+    def __init__(self, df, k, depths=None, mask_others=False, output=None):
         self.df = df
         self.depths = depths
         self.k = k
@@ -895,22 +924,25 @@ class KAnonymity:
                 return self.df[col].apply(lambda y: int(int(y / (10 ** depth)) * (10 ** depth))if pd.notnull(y) else y)
             return self.df[col]
 
+        df_header = set(self.df.columns)
         if self.mask_others:
-            df_header = set(self.df.columns)
-            for key in df_header - set(self.depths.keys()):
-                self.df[key] = '*'
+            for key in df_header:
+                if (not pd.api.types.is_integer_dtype(self.df[key])
+                        and not pd.api.types.is_float_dtype(self.df[key])):
+                    self.df = self.df.drop(key, axis=1)
 
-        for key in self.depths:
+        num_columns = []
+        df_header = set(self.df.columns)
+        for key in df_header:
             if pd.api.types.is_integer_dtype(self.df[key]):
                 self.df[key] = generalize(key)
+                num_columns.append(key)
             elif pd.api.types.is_float_dtype(self.df[key]):
                 self.df[key].apply(lambda x: round(x) if pd.notnull(x) else x)
                 self.df[key] = generalize(key)
-            else:
-                self.df[key] = '*'
-
+                num_columns.append(key)
         # filter data with at least k records
-        grouped = self.df.groupby(list(self.depths.keys())).filter(lambda x: len(x) >= self.k)
+        grouped = self.df.groupby(num_columns).filter(lambda x: len(x) >= self.k)
         if self.output is None:
             return grouped
         else:
@@ -966,7 +998,8 @@ faker_pos_handlers = {
     'Locations': Mapping.faker_location_tier,
     'Emails': Mapping.faker_email_tier,
     'Phone-Numbers': Mapping.faker_phone_number_tier,
-    'Organizations': Mapping.faker_org_tier
+    'Organizations': Mapping.faker_org_tier,
+    'Others': Mapping.faker_rand_word_tier
 }
 
 group_handlers = {
