@@ -9,7 +9,9 @@ from yaml import CLoader as Loader
 import pandas as pd
 
 home_dir = os.path.expanduser('~')
-test_files_folder = f'{home_dir}/PycharmProjects/pseudPy/tests/test_files'
+# change path to repository before running unit tests
+path_to_repo = f'{home_dir}/PycharmProjects/pseudPy'
+test_files_folder = f'{path_to_repo}/tests/test_files'
 
 
 class TestStructuredPseudonymization(unittest.TestCase):
@@ -30,7 +32,7 @@ class TestStructuredPseudonymization(unittest.TestCase):
             map_columns,
             df=df,
             output=output,
-            #patterns=['salary', '>', 100000]
+            # patterns=['salary', '>', 100000] # filter data
         )
 
         pseudo.pseudonym()
@@ -80,26 +82,8 @@ class TestStructuredPseudonymization(unittest.TestCase):
 
         pseudo.pseudonym()
 
-        #os.rename(f'{test_files_folder}/secure_key_Index_name.txt', f'{test_files_folder}/secure_key_name.txt')
-        #os.rename(f'{test_files_folder}/secure_key_Index_country.txt', f'{test_files_folder}/secure_key_country.txt')
-
         output_path_map_0 = f'{test_files_folder}/mapping_output_name.csv'
         output_path_map_1 = f'{test_files_folder}/mapping_output_country.csv'
-
-        df_0 = pl.read_csv(output_path_map_0)
-        df_1 = pl.read_csv(output_path_map_1)
-
-        """
-        df_for_revert = pl.read_csv(f'{test_files_folder}/output.csv')
-            for i in map_columns:
-            input_file = f'{test_files_folder}/mapping_output_{i}.csv'
-            revert_pseudo = pseudPy.Pseudonymization(
-                df=df_for_revert,
-                output=test_files_folder,
-                map_columns=map_columns[map_columns.index(i)]
-            )
-            revert_pseudo.revert_pseudonym(revert_df=input_file)
-        """
 
         for i in map_columns:
             pseudo_decrypt = pseudPy.Pseudonymization(
@@ -130,7 +114,6 @@ class TestStructuredPseudonymization(unittest.TestCase):
             os.remove(f'{test_files_folder}/decrypted_output_country.csv')
             os.remove(f'{test_files_folder}/secure_key_country.txt')
             os.remove(f'{test_files_folder}/secure_key_name.txt')
-            os.remove(f'{test_files_folder}/secure_key_salary.txt')
             print('Files successfully removed')
         else:
             print('Files does not exist')
@@ -414,7 +397,7 @@ class TestUnstructuredPseudonymization(unittest.TestCase):
         """Pseudonymize free text by using YAML as config file."""
         """ works but cannot filter for Emily (just a name), this causes repetitions in names"""
 
-        with open(f"{home_dir}/PycharmProjects/pseudPy/tests/config.yaml", "rt") as config_file:
+        with open(f"{path_to_repo}/tests/config.yaml", "rt") as config_file:
             config = yaml.load(config_file, Loader=Loader)
 
         output_path = 'text.txt'
@@ -749,7 +732,6 @@ class TestStructuredDataAggregation(unittest.TestCase):
 
         grouped = k_anonymity.k_anonymity()
 
-        print(grouped)
         # check if k-anonymized
         k = 4
         is_k_anonym = pseudPy.KAnonymity(

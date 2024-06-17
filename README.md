@@ -80,6 +80,15 @@ If complications occur, please refer to the [venv documentation](https://docs.py
 pip install -r requirements.txt
 ```
 
+### Unit Tests
+
+---
+
+***Note***: please change the path to repository before running the unit tests!
+
+Navigate to *new_unit_tests.py* and change the parameter *path_to_repo* at the 
+very beginning.
+
 ## Examples
 
 ---
@@ -241,15 +250,50 @@ More complex structures naturally require a deeper understanding of the library.
 ### Pseudonymization
 
 - counter
+
+A monotonic counter that starts at a specific value, e.g., 0, and is incremented by 1 for each
+new identity.
 - encrypt
+
+The symmetric encryption algorithm AES. Use encrypted values as pseudonyms.
 - decrypt
+
+Decrypt the pseudonyms using the secret key.
 - random1
+
+A random1 method generates a UUID9, uuid1(), from a host ID, a sequence number, and the
+current time.
 - random4
+
+The random4 method generates an entirely random UUID, uuid4().
 - hash
+
+The hashing method generates a series of pseudonyms by applying the SHA-256 algorithm to
+the hexadecimal encoding of each entry value.
 - hash-salt
+
+With the hash-salt method, pseudonyms are created by hashing the initial values with the SHA-
+256 algorithm and using a randomly generated UUID value, uuid4(), in hexadecimal coding as
+a salt.
 - merkle-tree 
+
+The method combines all identifiers of each structured entry row in a Merkle tree. The 
+pseudonyms are defined as the unique root values of the individual corresponding Merkle trees.
 - faker
+
+The faker method can only be used on unstructured data. Depending on the entity type, the
+method automatically replaces the input value with the fake name of the corresponding entity.
+For structured data, the specific faker type that matches the desired fake name type must be
+selected manually. "faker-name" for the full names, "faker-email" for the emails, "faker-phone" 
+for the phone numbers and "faker-org" for the organization names.
 
 ### Anonymization
 - aggregation
+
+Aggregation is an anonymization technique in which the attributes of the dataset are converted
+into combined values. For example, grouping the specific age
+values into more general age groups.
 - k-anonymity
+
+The main requirement to consider data as k-anonymous: the combination of
+quasi-identifiers in the dataset must be matched to at least k individuals.

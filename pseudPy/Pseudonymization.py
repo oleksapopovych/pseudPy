@@ -12,7 +12,6 @@ import pandas as pd
 import polars.exceptions
 import spacy
 from cryptography.hazmat.primitives.padding import PKCS7
-from presidio_evaluator.data_generator import PresidioDataGenerator
 from spacy.matcher import Matcher
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
@@ -49,8 +48,8 @@ class Pseudonymization:
     seed : int
         Seed random pseudonymization methods like random1, random4, or faker. Return always expected result.
     pos_type : str or list
-        Type(s) of entities in data to be pseudonymized such as names, locations,
-        organizations, emails, and phone numbers. Use if data is unstructured.
+        Type(s) of entities in data to be pseudonymized such as 'Names', 'Locations',
+        'Organizations', 'Emails', and 'Phone-Numbers'. Use if data is unstructured.
     patterns : str or spaCy Matcher
         If data is structured, use *"column,operation,value"*,
 
@@ -210,7 +209,7 @@ class Pseudonymization:
             >>>        patterns = [[{"LOWER": "Emily"}, {"LOWER": "White"}],
             >>>        [{"LOWER": "Bob"}]])
             >>>
-            >>> pseudo.pseudonym()
+            >>> pseudo.nlp_pseudonym()
         """
         # definitions
         counter = 0
@@ -300,8 +299,8 @@ class Pseudonymization:
             >>>      text = file.read()
             >>> output = '/output/dir'
             >>> pseudo = pseudPy.Pseudonymization(
-            >>>        map_columns = 'Names',   # select from: 'Names', 'Locations', 'Organizations', 'Emails' and 'Phone-Numbers'
-            >>>        text=text,
+            >>>        map_columns = 'Names',   # select from: 'Names', 'Locations',
+            >>>        text=text,               #'Organizations', 'Emails' and 'Phone-Numbers'.
             >>>        output=output)
             >>> df_revert = pl.read_csv(f'{output}/mapping_output_Names.csv')
             >>>
@@ -717,6 +716,8 @@ class Helpers:
         map_dict = dict()
 
         if self.patterns is not None:
+            if "Others" not in self.pos_type:
+                self.pos_type.append("Others")
             for pos in self.pos_type:
                 if pos == "Others":
                     map_dict[pos] = []
@@ -1006,40 +1007,3 @@ group_handlers = {
     'number': Aggregation.group_num,
     'dates-to-years': Aggregation.group_dates_to_years
 }
-
-
-def run():
-    pass
-    # TODO : Presidio - fake data generation
-
-    sentence_templates = [
-        "My name is {{name}}",
-        "Please send it to {{address}}",
-        "I just moved to {{city}} from {{country}}",
-    ]
-
-    data_generator = PresidioDataGenerator()
-    fake_records = data_generator.generate_fake_data(
-        templates=sentence_templates, n_samples=10
-    )
-
-    fake_records = list(fake_records)
-
-    # Print the spans of the first sample
-    #for i in range(len(fake_records)):
-    #    print(fake_records[i].fake)
-    #print(fake_records[0].spans)
-
-    for i in range(len(fake_records)):
-        print(fake_records[i].fake)
-        pseudo = Pseudonymization(
-            map_method='merkle-tree',
-            text=fake_records[i].fake,
-            pos_type=['Names', 'Locations']
-        )
-        print(pseudo.nlp_pseudonym()[2])
-
-
-if __name__ == '__main__':
-    run()
-

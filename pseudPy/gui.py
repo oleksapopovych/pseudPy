@@ -13,7 +13,6 @@ from tkinter import filedialog
 
 def initialize_pseudonym():
     """Getting user input and completing pseudonymization"""
-    is_structured = True
     map_method = map_method_var.get()
     input_file = input_file_entry.get()
     if not os.path.exists(input_file):
@@ -39,20 +38,7 @@ def initialize_pseudonym():
     else:
         seed = int(seed)
 
-    try:
-        pl.read_csv(input_file)
-        print("The data is structured.")
-        if structure_var.get() == "free text":
-            messagebox.showinfo("Failed", "Please check if the input file is of free text format!")
-    except polars.exceptions.ComputeError:
-        is_structured = False
-        print("The data is not structured.")
-        if structure_var.get() == "structured":
-            messagebox.showinfo("Failed", "Please check if the input file is of CSV format!")
-    except FileNotFoundError:
-        messagebox.showinfo("Failed", "Please fill out the form first!")
-
-    if is_structured:
+    if structure_var.get() == "structured":
         map_columns = map_columns_entry.get()
         if map_columns == "-":
             map_columns = None
@@ -73,7 +59,7 @@ def initialize_pseudonym():
 
         pseudo.pseudonym()
         messagebox.showinfo("Success", "Pseudonymization successful!")
-    else:
+    elif structure_var.get() == "free text":
         pos_type_selected = pos_type_list.curselection()
         pos_type = [pos_type_list.get(i) for i in pos_type_selected]
         if not pos_type:
@@ -97,7 +83,6 @@ def initialize_pseudonym():
 
 def revert_data():
     """Revert the data to its original state"""
-    is_structured = True
     input_mapping = input_mapping_entry.get()
     if not os.path.exists(input_mapping):
         messagebox.showinfo("Failed", "Mapping path does not exist!")
@@ -108,16 +93,11 @@ def revert_data():
     if not os.path.exists(output_revert):
         messagebox.showinfo("Failed", "Output path does not exist!")
 
-    try:
-        pl.read_csv(input_file_revert)
-    except polars.exceptions.ComputeError:
-        is_structured = False
-
     revert_df = pl.read_csv(input_mapping)
     columns = map_columns_entry_revert.get()
     if not columns or (columns == "-"):
         messagebox.showinfo("Failed", "Please specify the column to map!")
-    if is_structured:
+    if structure_var.get() == "structured":
         df = pl.read_csv(input_file_revert)
         if pseudonyms_entry_revert.get("1.0", "end-1c") != "-":
             pseudonyms = pseudonyms_entry_revert.get("1.0", "end-1c").split(",")
@@ -137,7 +117,7 @@ def revert_data():
             messagebox.showinfo("Success", "Revert was successful!")
         except KeyError:
             messagebox.showinfo("Failed", "Please check whether the column names match the mapping.")
-    else:
+    elif structure_var.get() == "free text":
         with open(input_file_revert, "r") as file:
             text = file.read()
         if pseudonyms_entry_revert.get("1.0", "end-1c") != "-":
@@ -171,6 +151,7 @@ def revert_data():
                 messagebox.showinfo("Success", "Revert was successful!")
             except KeyError:
                 messagebox.showinfo("Failed", "Please check whether the column names match the mapping.")
+
 
 def search_for_file():
     """Browsing the input file on the PC"""
@@ -390,7 +371,7 @@ def add_widgets():
     if structure_var.get() == "free text":
         root.geometry("700x750")
     else:
-        root.geometry("700x600")
+        root.geometry("750x700")
 
     if root_frame.winfo_children():
         for widget in root_frame.winfo_children():
@@ -691,6 +672,15 @@ def add_widgets():
                               fg='#c1121f')
         note_label.grid(row=13, column=0, pady=10, sticky=tk.W)
 
+        rec_label = tk.Label(root_frame, text="Use aggregation and "
+                                              "k-anonymization", font=medium_font,
+                             fg='#c1121f')
+        rec_label.grid(row=14, column=0, pady=10, sticky=tk.W)
+
+        rec_label_2 = tk.Label(root_frame, text="separately to avoid errors.", font=medium_font,
+                             fg='#c1121f')
+        rec_label_2.grid(row=15, column=0, pady=10, sticky=tk.W)
+
 
 def check_structure():
     """Add widgets to the homepage, select the type of data or the type of operation to proceed"""
@@ -801,11 +791,7 @@ def k_anonym():
                 )
                 input_df = agg.group_dates_to_years()
 
-    #if agg_columns is None:
     df_header = input_df.columns.to_list()
-    #else:
-    #    df_header = input_df.columns.to_list()
-    #    df_header = [col for col in df_header if col not in agg_columns_list]
 
     depths = {}
     if k > 0:
