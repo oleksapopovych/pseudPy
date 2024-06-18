@@ -8,7 +8,6 @@ import Pseudonymization as pseudPy
 
 
 def main(config_file):
-    is_structured = True
 
     with open(config_file, 'r') as config_file:
         config = yaml.load(config_file, Loader=Loader)
@@ -18,22 +17,20 @@ def main(config_file):
 
     try:
         input_df = pd.read_csv(input_file)
-        print("The data is structured.")
-    except pandas.errors.ParserError:
-        is_structured = False
-        print("Error: The data is not structured. Aggregation or k-anonymization is only available for structured data.")
 
-    df_header = input_df.columns.to_list()
-    depths = {}
-    if k > 0:
-        for col in df_header:
-            depths[col] = k - 1
-    is_k_anonym = pseudPy.KAnonymity(
-        df=input_df,
-        k=k,
-        depths=depths
-    )
-    print(is_k_anonym.is_k_anonymized())
+        df_header = input_df.columns.to_list()
+        depths = {}
+        if k > 0:
+            for col in df_header:
+                depths[col] = k - 1
+        is_k_anonym = pseudPy.KAnonymity(
+            df=input_df,
+            k=k,
+            depths=depths
+        )
+        print(is_k_anonym.is_k_anonymized())
+    except pandas.errors.ParserError:
+        print("Error: The data is not structured. Aggregation or k-anonymization is only available for structured data.")
 
 
 if __name__ == '__main__':

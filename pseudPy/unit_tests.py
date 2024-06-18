@@ -10,8 +10,8 @@ import pandas as pd
 
 home_dir = os.path.expanduser('~')
 # change path to repository before running unit tests
-path_to_repo = f'{home_dir}/PycharmProjects/pseudPy'
-test_files_folder = f'{path_to_repo}/tests/test_files'
+path_to_repo = f'{home_dir}/PycharmProjects/pseudPy/pseudPy'
+test_files_folder = f'{path_to_repo}/test_files'
 
 
 class TestStructuredPseudonymization(unittest.TestCase):
@@ -397,7 +397,7 @@ class TestUnstructuredPseudonymization(unittest.TestCase):
         """Pseudonymize free text by using YAML as config file."""
         """ works but cannot filter for Emily (just a name), this causes repetitions in names"""
 
-        with open(f"{path_to_repo}/tests/config.yaml", "rt") as config_file:
+        with open(f"{path_to_repo}/config.yaml", "rt") as config_file:
             config = yaml.load(config_file, Loader=Loader)
 
         output_path = 'text.txt'
@@ -415,10 +415,6 @@ class TestUnstructuredPseudonymization(unittest.TestCase):
                                           all_ne=all_ne,
                                           encrypt_map=True)
         pseudo.nlp_pseudonym()
-
-        df = pl.read_csv('mapping_output_Names.csv')
-
-        #os.rename('secure_key_Index_Names.txt', 'secure_key_Names.txt')
 
         pseudo_decrypt = pseudPy.Pseudonymization(
             input_file='mapping_output_Names.csv',

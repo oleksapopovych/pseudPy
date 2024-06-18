@@ -56,14 +56,13 @@ def main(config_file):
         if k > 0:
             for col in df_header:
                 depths[col] = k - 1
-        print(depths)
         k_anonymity = pseudPy.KAnonymity(
             df=input_df,
             depths=depths,
             k=k,
             output=output
         )
-        print(k_anonymity.k_anonymity())
+        k_anonymity.k_anonymity()
 
 
 if __name__ == '__main__':

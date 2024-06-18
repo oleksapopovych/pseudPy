@@ -1,0 +1,11 @@
+map_columns: null
+map_method: counter
+input_file: /Users/oleksandrapopovych/PycharmProjects/pseudPy/pseudPy/test_files/free_text.txt
+patterns: null
+output_to_file: true
+pos_type: null
+output: /Users/oleksandrapopovych/PycharmProjects/pseudPy/pseudPy/test_files
+mapping: true
+encrypt_map: false
+all_ne: true
+seed: null

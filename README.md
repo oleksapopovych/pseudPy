@@ -55,14 +55,14 @@ will be found correctly, so the user is also responsible for verifying the outpu
 git clone https://github.com/oleksapopovych/pseudPy.git
 ```
 
-#### Navigate to the directory with the repository and create the virtual environment:
+#### Navigate to the main directory of the repository (pseudPy) and create the virtual environment:
 ```bash
-python -m venv <directory>
+python -m venv .venv
 ```
 
 Linux and MacOS venv activation:
 ```bash
-source myvenv/bin/activate
+source .venv/bin/activate
 ```
 
 Windows venv activation:
