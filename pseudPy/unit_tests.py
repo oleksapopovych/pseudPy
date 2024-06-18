@@ -3,7 +3,7 @@ import sys
 import unittest
 import polars as pl
 from polars.testing import assert_frame_equal
-import pseudPy.Pseudonymization as pseudPy
+import Pseudonymization as pseudPy
 import yaml
 from yaml import CLoader as Loader
 import pandas as pd
@@ -417,7 +417,7 @@ class TestUnstructuredPseudonymization(unittest.TestCase):
         pseudo.nlp_pseudonym()
 
         pseudo_decrypt = pseudPy.Pseudonymization(
-            input_file='mapping_output_Names.csv',
+            input_file=f'{test_files_folder}/mapping_output_Names.csv',
             map_method='decrypt',
             map_columns='Names',
             output=test_files_folder
@@ -431,15 +431,15 @@ class TestUnstructuredPseudonymization(unittest.TestCase):
 
         if os.path.exists(output_path):
             os.remove(output_path)
-        if os.path.exists('mapping_output_Names.csv'):
-            os.remove('mapping_output_Names.csv')
-            os.remove('mapping_output_Locations.csv')
-            os.remove('mapping_output_Organizations.csv')
+        if os.path.exists(f'{test_files_folder}/mapping_output_Names.csv'):
+            os.remove(f'{test_files_folder}/mapping_output_Names.csv')
+            os.remove(f'{test_files_folder}/mapping_output_Locations.csv')
+            os.remove(f'{test_files_folder}/mapping_output_Organizations.csv')
         if os.path.exists(f'{test_files_folder}/decrypted_output_Names.csv'):
             os.remove(f'{test_files_folder}/decrypted_output_Names.csv')
-            os.remove('secure_key_Names.txt')
-            os.remove('secure_key_Locations.txt')
-            os.remove('secure_key_Organizations.txt')
+            os.remove(f'{test_files_folder}/secure_key_Names.txt')
+            os.remove(f'{test_files_folder}/secure_key_Locations.txt')
+            os.remove(f'{test_files_folder}/secure_key_Organizations.txt')
 
     def test_nlp_pseudonym_work_report_counter_method(self):
         """Pseudonymize free text by using counter method."""
