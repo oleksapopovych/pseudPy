@@ -91,6 +91,21 @@ pip install -r requirements.txt
 
 ***Note***: please change the paths in the *config_\*.yaml* files before running the scripts and unit tests.
 
+### Unit Tests
+
+---
+
+If a path error occurs, try navigating to the */pseudPy/pseudPy/* folder and then run the unit tests. 
+The problem might depend on the IDE.
+
+In the worst case, configure the paths manually in *unit_tests.py*.:
+
+```python
+home_dir = os.path.expanduser('~')
+path_to_repo = f'{os.getcwd()}'
+test_files_folder = f'{path_to_repo}/test_files'
+```
+
 ## Examples
 
 ---
