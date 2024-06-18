@@ -65,12 +65,17 @@ Linux and MacOS venv activation:
 source .venv/bin/activate
 ```
 
+Deactivate:
+```bash
+deactivate
+```
+
 Windows venv activation:
 ```bash
 # In cmd.exe
-venv\Scripts\activate.bat
+.venv\Scripts\activate.bat
 # In PowerShell
-venv\Scripts\Activate.ps1
+.venv\Scripts\Activate.ps1
 ```
 
 If complications occur, please refer to the [venv documentation](https://docs.python.org/3/library/venv.html). 
@@ -80,14 +85,11 @@ If complications occur, please refer to the [venv documentation](https://docs.py
 pip install -r requirements.txt
 ```
 
-### Unit Tests
+### Script Configuration
 
 ---
 
-***Note***: please change the path to repository before running the unit tests!
-
-Navigate to *new_unit_tests.py* and change the parameter *path_to_repo* at the 
-very beginning.
+***Note***: please change the paths in the *config_\*.yaml* files before running the scripts and unit tests.
 
 ## Examples
 
@@ -96,7 +98,7 @@ very beginning.
 
 Run the script  with YAML config file(from the repository directory):
 ```bash
-python /pseudPy/script_pseudonym.py /tests/config.yaml
+python /pseudPy/script_pseudonym.py /pseudPy/config.yaml
 ```
 YAML for unstructured data:
 ```yaml

@@ -10,7 +10,7 @@ import pandas as pd
 
 home_dir = os.path.expanduser('~')
 # change path to repository before running unit tests
-path_to_repo = f'{home_dir}/PycharmProjects/pseudPy/pseudPy'
+path_to_repo = f'{os.getcwd()}'
 test_files_folder = f'{path_to_repo}/test_files'
 
 
