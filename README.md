@@ -30,6 +30,10 @@ provided as anonymization and data minimization options.
 ---
 [pseudPy Documentation](https://github.com/oleksapopovych/pseudPy/blob/main/pseudPy/docs/build/pdf/pseudPy.pdf)
 
+**Check out the [Tutorial](https://youtu.be/H2FiyKSnIx4) for the video instructions!** (primarily for GUI)
+
+The sample files from the video can be found in the folder *pseudPy/test_files*.
+
 ### Main Features
 
 ---
