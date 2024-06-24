@@ -330,6 +330,7 @@ class Mapping:
         self.count_start = count_start
         self.seed = seed
         self.output = output
+        self.fake = Faker()
 
     def counter_tier(self):
         """Counter method: return Series of ascending numbers as pseudonyms"""
@@ -468,71 +469,59 @@ class Mapping:
             text = text.replace(index_value, decrypted_value)
         return text
 
-    @staticmethod
-    def generate_fake_names():
+    def generate_fake_names(self):
         """Generate fake name using Faker."""
-        fake = Faker()
-        return fake.name()
+        return self.fake.name()
 
     def faker_names_tier(self):
         """Apply fake names as pseudonyms. Return Series of pseudonyms."""
         return pl.Series(f'Index_{self.first_tier}', self.df[self.first_tier].map_elements(
-            lambda x: Mapping.generate_fake_names(), return_dtype=pl.Utf8))
+            lambda x: Mapping.generate_fake_names(self), return_dtype=pl.Utf8))
 
-    @staticmethod
-    def generate_fake_phone_number() -> str:
+    def generate_fake_phone_number(self) -> str:
         """Generate fake phone number using Faker."""
-        fake = Faker()
-        return f'+49 {fake.msisdn()[3:]}'
+        return f'+49 {self.fake.msisdn()[3:]}'
 
     def faker_phone_number_tier(self):
         """Apply fake phone numbers as pseudonyms. Return Series of pseudonyms."""
         return pl.Series(f'Index_{self.first_tier}', self.df[self.first_tier].map_elements(
-            lambda x: Mapping.generate_fake_phone_number(), return_dtype=pl.Utf8))
+            lambda x: Mapping.generate_fake_phone_number(self), return_dtype=pl.Utf8))
 
-    @staticmethod
-    def generate_fake_location():
+    def generate_fake_location(self):
         """Generate fake location using Faker."""
-        fake = Faker()
-        return fake.city()
+        return self.fake.city()
 
     def faker_location_tier(self):
         """Apply fake locations as pseudonyms. Return Series of pseudonyms."""
         return pl.Series(f'Index_{self.first_tier}', self.df[self.first_tier].map_elements(
-            lambda x: Mapping.generate_fake_location(), return_dtype=pl.Utf8))
+            lambda x: Mapping.generate_fake_location(self), return_dtype=pl.Utf8))
 
-    @staticmethod
-    def generate_fake_email():
+    def generate_fake_email(self):
         """Generate fake email using Faker."""
-        fake = Faker()
-        return fake.email()
+        return self.fake.email()
 
     def faker_email_tier(self):
         """Apply fake email as pseudonyms. Return Series of pseudonyms."""
         return pl.Series(f'Index_{self.first_tier}', self.df[self.first_tier].map_elements(
-            lambda x: Mapping.generate_fake_email(), return_dtype=pl.Utf8))
+            lambda x: Mapping.generate_fake_email(self), return_dtype=pl.Utf8))
 
-    @staticmethod
-    def generate_fake_org_name():
+    def generate_fake_org_name(self):
         """Generate fake company name using Faker."""
-        fake = Faker()
-        return fake.company()
+        return self.fake.company()
 
     def faker_org_tier(self):
         """Apply fake company as pseudonyms. Return Series of pseudonyms."""
         return pl.Series(f'Index_{self.first_tier}', self.df[self.first_tier].map_elements(
-            lambda x: Mapping.generate_fake_org_name(), return_dtype=pl.Utf8))
+            lambda x: Mapping.generate_fake_org_name(self), return_dtype=pl.Utf8))
 
-    @staticmethod
-    def generate_fake_random_word():
+    def generate_fake_random_word(self):
         """Generate fake word using Faker."""
-        fake = Faker()
-        return fake.word().capitalize()
+        return self.fake.word().capitalize()
 
     def faker_rand_word_tier(self):
         """Apply fake word as pseudonyms. Return Series of pseudonyms."""
         return pl.Series(f'Index_{self.first_tier}', self.df[self.first_tier].map_elements(
-            lambda x: Mapping.generate_fake_random_word(), return_dtype=pl.Utf8))
+            lambda x: Mapping.generate_fake_random_word(self), return_dtype=pl.Utf8))
 
 
 # Merkle Tree adapted from: https://github.com/onuratakan/mix_merkletree

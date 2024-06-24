@@ -117,7 +117,7 @@ test_files_folder = f'{path_to_repo}/test_files'
 
 Run the script  with YAML config file(from the repository directory):
 ```bash
-python /pseudPy/script_pseudonym.py /pseudPy/config.yaml
+python /pseudPy/script_pseudonym.py /pseudPy/config_pseudonym.yaml
 ```
 YAML for unstructured data:
 ```yaml
